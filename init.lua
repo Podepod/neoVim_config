@@ -49,7 +49,6 @@ if not vim.loop.fs_stat(lazypath) then
   vim.fn.system {
     'git',
     'clone',
-    '--filter=blob:none',
     'https://github.com/folke/lazy.nvim.git',
     '--branch=stable', -- latest stable release
     lazypath,
@@ -64,6 +63,41 @@ vim.opt.rtp:prepend(lazypath)
 --    as they will be available in your neovim runtime.
 require('lazy').setup({
   -- NOTE: First, some plugins that don't require any configuration
+
+  -- zelf toegevoegd - help
+  {'akinsho/toggleterm.nvim', version = "*", opts = {open_mapping = [[<c-\>]]}},
+  {
+    "nvim-neo-tree/neo-tree.nvim",
+    branch = "v3.x",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+      "MunifTanjim/nui.nvim",
+    }
+  },
+  {'romgrk/barbar.nvim',
+    dependencies = {
+      'lewis6991/gitsigns.nvim', -- OPTIONAL: for git status
+      'nvim-tree/nvim-web-devicons', -- OPTIONAL: for file icons
+    },
+    init = function() vim.g.barbar_auto_setup = false end,
+    opts = {
+      -- lazy.nvim will automatically call setup for you. put your options here, anything missing will use the default:
+      -- animation = true,
+      -- insert_at_start = true,
+      -- …etc.
+    },
+    version = '^1.0.0', -- optional: only update when a new 1.x version is released
+  },
+  {
+  "gbprod/cutlass.nvim",
+  opts = {
+      -- your configuration comes here
+      -- or don't set opts to use the default settings
+      -- refer to the configuration section below
+      cut_key = '<C-x>'
+    }
+  },
 
   -- Git related plugins
   'tpope/vim-fugitive',
