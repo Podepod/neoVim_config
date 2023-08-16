@@ -1,5 +1,7 @@
 local tree_exec = require'neo-tree.command'.execute
 
+-- test git config
+
 -- Ctrl Z en Y
 vim.keymap.set({'n', 'v', 'i'}, '<C-z>', vim.cmd.undo)
 vim.keymap.set({'n', 'v', 'i'}, '<C-y>', vim.cmd.redo)
